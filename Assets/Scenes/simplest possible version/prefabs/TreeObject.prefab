@@ -260,8 +260,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c22c81ae6bdf3f44aba201784d2e8fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startinggrowth:
+    roots:
+      width: 1
+      height: 1
+    trunk:
+      height: 1
+      width: 1
+    canopy:
+      wideness: 1
+      darkness: 0
+      height: 1
+  startingresources:
+    water: 1
+    sun: 1
   visual: {fileID: 714293117182012192}
   inventoryDisplay: {fileID: 0}
+  rootGatherMultiplier: 1
+  canopyGatherMultiplier: 1
+  trunkStorageMultiplier: 100
 --- !u!1 &714293117665725015
 GameObject:
   m_ObjectHideFlags: 0

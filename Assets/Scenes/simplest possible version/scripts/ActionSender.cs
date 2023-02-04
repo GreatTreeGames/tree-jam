@@ -8,7 +8,7 @@ public class ActionSender : MonoBehaviour
     {
         InputAction a = possibleActions[index];
         target.growth+= a.toApply;
-        target.resources += a.toSpend;
+        target.resources -= a.toSpend;
     }
 
     public List<InputAction> possibleActions;

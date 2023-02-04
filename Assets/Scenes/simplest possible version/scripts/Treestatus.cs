@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Treestatus : MonoBehaviour
 {
-    
+    public GrowthStatuses startinggrowth;
+    public ResourcesStatuses startingresources;
     public GrowthStatuses growth
     {
         get
@@ -33,6 +34,39 @@ public class Treestatus : MonoBehaviour
     ResourcesStatuses _resources;
     public TreeGraphics visual;
     public TreeInventoryDisplay inventoryDisplay;
+    public float rootGatherMultiplier = 1f;
+    public float canopyGatherMultiplier = 1f;
+    public float trunkStorageMultiplier = 1f;
+
+    void Start()
+    {
+        growth = startinggrowth;
+        resources = startingresources;
+    }
+    void Update()
+    {
+        
+        //perform resource aquisition based on area of leaves and branches
+        //store as much resources as possible in the trunk
+
+        {
+            //calculate gather rate and limits
+            float rootsArea = _growth.roots.width * _growth.roots.height;
+            float canopyArea = _growth.canopy.wideness * _growth.canopy.height;
+            float trunkArea = _growth.trunk.width * _growth.trunk.height;
+
+            float trunkTotalSunStorage = trunkArea * trunkStorageMultiplier; //replace with a function if the multiplier is ever not constant
+            float trunkTotalWaterStorage = trunkTotalSunStorage; //replace with a function if these are ever different
+            float rootTotalGatherRate = rootsArea * rootGatherMultiplier;//same
+            float canopyTotalGatherRate = canopyArea * canopyGatherMultiplier; //same
+            //gather. clamp by limit
+            ResourcesStatuses updatedResources = new ResourcesStatuses();
+            updatedResources.sun = Mathf.CeilToInt(Mathf.Clamp(resources.sun + canopyTotalGatherRate, 0, trunkTotalSunStorage));
+            updatedResources.water = Mathf.CeilToInt(Mathf.Clamp(resources.water + rootTotalGatherRate, 0, trunkTotalWaterStorage));
+            resources = updatedResources;
+
+        }
+    }
 }
 [System.Serializable]
 public struct GrowthStatuses
