@@ -9,18 +9,18 @@ public class Treestatus : MonoBehaviour
 
     public void rushRoots()
     {
-        status.roots.wideness+=2;
+        status.roots.width+=2;
     }
 
     public void boomRoots()
     {
-        status.roots.wideness++;
-        status.roots.depth++;
+        status.roots.width++;
+        status.roots.height++;
     }
 
     public void turtleRoots()
     {
-        status.roots.depth+=2;
+        status.roots.height+=2;
     }
 
     public void RushTrunk()
@@ -45,7 +45,7 @@ public class Treestatus : MonoBehaviour
 
     public void boomBranchesLeaves()
     {
-        status.branchesLeaves.depth+= 1;
+        status.branchesLeaves.height+= 1;
         status.branchesLeaves.wideness+=1;
     }
 
@@ -66,8 +66,8 @@ public struct Statuses
 
 public struct rootsStatus
 {
-    public int wideness;
-    public int depth;
+    public int width;
+    public int height;
 }
 
 public struct trunkStatus
@@ -81,5 +81,5 @@ public struct branchesLeavesStatus
 {
     public int wideness;
     public int darkness;
-    public int depth;
+    public int height;
 }
