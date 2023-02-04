@@ -10,7 +10,12 @@ public class TreeGraphics : MonoBehaviour
     public float RootScaleIncrementMultiplier = 1;
     public float TrunkScaleIncrementMultiplier = 1;
     public float CanopyScaleIncrementMultiplier = 1;
-    public void updateGraphics(Statuses status)
+
+    void Start()
+    {
+        updateGraphics(new GrowthStatuses());
+    }
+    public void updateGraphics(GrowthStatuses status)
     {
         {
             //increment root wideness and depth
@@ -28,8 +33,8 @@ public class TreeGraphics : MonoBehaviour
         }
         {
             //increment canopy wideness and depth
-            float canopyWideness = 1 + (CanopyScaleIncrementMultiplier * status.branchesLeaves.wideness);
-            float canopyDepth = 1 + (CanopyScaleIncrementMultiplier * status.branchesLeaves.height);
+            float canopyWideness = 1 + (CanopyScaleIncrementMultiplier * status.canopy.wideness);
+            float canopyDepth = 1 + (CanopyScaleIncrementMultiplier * status.canopy.height);
 
             CanopySprite.transform.localScale = new Vector3(canopyWideness, canopyDepth,0);
         }
