@@ -2953,6 +2953,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 714293116563630319, guid: 3044e0a9a38b1eb41b5da1517f481b98, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 714293117041706509, guid: 3044e0a9a38b1eb41b5da1517f481b98, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 714293117182012192, guid: 3044e0a9a38b1eb41b5da1517f481b98, type: 3}
       propertyPath: RootsSprite
       value: 
@@ -3012,6 +3020,14 @@ PrefabInstance:
     - target: {fileID: 714293117188342827, guid: 3044e0a9a38b1eb41b5da1517f481b98, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 714293117665725014, guid: 3044e0a9a38b1eb41b5da1517f481b98, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 714293117665725015, guid: 3044e0a9a38b1eb41b5da1517f481b98, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3044e0a9a38b1eb41b5da1517f481b98, type: 3}

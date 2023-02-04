@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Treestatus : MonoBehaviour
 {
-    Statuses status;
+    
+    public Statuses status;
     public TreeGraphics visual;
-
+    #region inputActions
     public void rushRoots()
     {
-        status.roots.width+=2;
+        status.roots.width += 2;
         visual.updateGraphics(status);
     }
 
@@ -22,7 +23,7 @@ public class Treestatus : MonoBehaviour
 
     public void turtleRoots()
     {
-        status.roots.height+=2;
+        status.roots.height += 2;
         visual.updateGraphics(status);
     }
 
@@ -34,58 +35,58 @@ public class Treestatus : MonoBehaviour
 
     public void boomTrunk()
     {
-        status.trunk.height+=2;
+        status.trunk.height += 2;
         visual.updateGraphics(status);
     }
 
     public void turtleTrunk()
     {
-        status.trunk.width +=2;
+        status.trunk.width += 2;
         visual.updateGraphics(status);
     }
 
     public void rushBranchesLeaves()
     {
-        status.branchesLeaves.wideness+=2;
+        status.branchesLeaves.wideness += 2;
         visual.updateGraphics(status);
     }
 
     public void boomBranchesLeaves()
     {
-        status.branchesLeaves.height+= 1;
-        status.branchesLeaves.wideness+=1;
+        status.branchesLeaves.height += 1;
+        status.branchesLeaves.wideness += 1;
         visual.updateGraphics(status);
     }
 
     public void turtleBranchesLeaves()
     {
-        status.branchesLeaves.darkness+=2;
+        status.branchesLeaves.darkness += 2;
         visual.updateGraphics(status);
     }
 
-
+    #endregion
 }
-
+[System.Serializable]
 public struct Statuses
 {
     public rootsStatus roots;
     public trunkStatus trunk;
     public branchesLeavesStatus branchesLeaves;
 }
-
+[System.Serializable]
 public struct rootsStatus
 {
     public int width;
     public int height;
 }
-
+[System.Serializable]
 public struct trunkStatus
 {
     public int height;
     public int width;
 
 }
-
+[System.Serializable]
 public struct branchesLeavesStatus
 {
     public int wideness;
