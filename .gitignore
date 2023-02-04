@@ -1,0 +1,12 @@
+/*
+/*/
+
+!.gitignore
+!/Assets/
+!/ProjectSettings/
+!/Packages/
+!/*.tgz
+!/*.tgz.meta
+!/Library/PackageCache/
+!/Library/PackageManager/
+!*.keystore
