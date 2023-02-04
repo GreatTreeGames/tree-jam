@@ -284,21 +284,6 @@
 }
 
 {
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
-    "m_ObjectId": "06aff72fab4647f991fb58f7202d5461",
-    "m_Id": 1,
-    "m_DisplayName": "Out",
-    "m_SlotType": 1,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "Out",
-    "m_StageCapability": 3,
-    "m_Value": 0.0,
-    "m_DefaultValue": 0.0,
-    "m_Labels": []
-}
-
-{
     "m_SGVersion": 1,
     "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
     "m_ObjectId": "13002bad54ec4b1d8e615d8917211601",
@@ -716,7 +701,7 @@
             "m_Id": "b957a28c19fd4115ab083382a247348f"
         },
         {
-            "m_Id": "06aff72fab4647f991fb58f7202d5461"
+            "m_Id": "aa4b7073d28c4af4b2eea7e69262aac8"
         }
     ],
     "synonyms": [],
@@ -851,6 +836,27 @@
         "z": 0.0,
         "w": 0.0
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector2MaterialSlot",
+    "m_ObjectId": "aa4b7073d28c4af4b2eea7e69262aac8",
+    "m_Id": 1,
+    "m_DisplayName": "dAndK",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "dAndK",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0
+    },
+    "m_Labels": []
 }
 
 {
