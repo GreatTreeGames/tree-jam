@@ -4,35 +4,82 @@ using UnityEngine;
 
 public class Treestatus : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    Statuses status;
+    public TreeGraphics visual;
+
+    public void rushRoots()
     {
-        
+        status.roots.wideness+=2;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void boomRoots()
     {
-        
+        status.roots.wideness++;
+        status.roots.depth++;
     }
+
+    public void turtleRoots()
+    {
+        status.roots.depth+=2;
+    }
+
+    public void RushTrunk()
+    {
+        //wow it's fucking nothing
+    }
+
+    public void boomTrunk()
+    {
+        status.trunk.height+=2;
+    }
+
+    public void turtleTrunk()
+    {
+        status.trunk.width +=2;
+    }
+
+    public void rushBranchesLeaves()
+    {
+        status.branchesLeaves.wideness+=2;
+    }
+
+    public void boomBranchesLeaves()
+    {
+        status.branchesLeaves.depth+= 1;
+        status.branchesLeaves.wideness+=1;
+    }
+
+    public void turtleBranchesLeaves()
+    {
+        status.branchesLeaves.darkness+=2;
+    }
+
+
 }
 
 public struct Statuses
 {
-
+    public rootsStatus roots;
+    public trunkStatus trunk;
+    public branchesLeavesStatus branchesLeaves;
 }
 
 public struct rootsStatus
 {
-
+    public int wideness;
+    public int depth;
 }
 
 public struct trunkStatus
 {
+    public int height;
+    public int width;
 
 }
 
 public struct branchesLeavesStatus
 {
-
+    public int wideness;
+    public int darkness;
+    public int depth;
 }
