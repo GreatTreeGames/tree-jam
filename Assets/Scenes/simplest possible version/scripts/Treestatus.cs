@@ -61,8 +61,8 @@ public class Treestatus : MonoBehaviour
             float canopyTotalGatherRate = canopyArea * canopyGatherMultiplier; //same
             //gather. clamp by limit
             ResourcesStatuses updatedResources = new ResourcesStatuses();
-            updatedResources.sun = Mathf.CeilToInt(Mathf.Clamp(resources.sun + canopyTotalGatherRate, 0, trunkTotalSunStorage));
-            updatedResources.water = Mathf.CeilToInt(Mathf.Clamp(resources.water + rootTotalGatherRate, 0, trunkTotalWaterStorage));
+            updatedResources.sun = Mathf.Clamp(resources.sun + canopyTotalGatherRate, 0, trunkTotalSunStorage);
+            updatedResources.water = Mathf.Clamp(resources.water + rootTotalGatherRate, 0, trunkTotalWaterStorage);
             resources = updatedResources;
 
         }
@@ -100,18 +100,53 @@ public struct GrowthStatuses
         c.canopy.darkness = a.canopy.darkness - b.canopy.darkness;
         return c;
     }
+
+    public static bool checkZero(GrowthStatuses g)
+    {
+        if (rootsStatus.checkZero(g.roots)|| trunkStatus.checkZero(g.trunk) || CanopyStatus.checkZero(g.canopy))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
 [System.Serializable]
 public struct rootsStatus
 {
     public int width;
     public int height;
+
+    public static bool checkZero(rootsStatus r)
+    {
+        if (r.width <= 0|| r.height <= 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
 [System.Serializable]
 public struct trunkStatus
 {
     public int height;
     public int width;
+    public static bool checkZero(trunkStatus t)
+    {
+        if (t.width <= 0|| t.height <= 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
 }
 [System.Serializable]
@@ -120,12 +155,24 @@ public struct CanopyStatus
     public int wideness;
     public int darkness;
     public int height;
+
+    public static bool checkZero(CanopyStatus c)
+    {
+        if (c.wideness <= 0|| c.height <= 0 || c.darkness <= 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
 [System.Serializable]
 public struct ResourcesStatuses
 {
-    public int water;
-    public int sun;
+    public float water;
+    public float sun;
 
     public static ResourcesStatuses operator + (ResourcesStatuses a, ResourcesStatuses b)
     {
@@ -140,6 +187,18 @@ public struct ResourcesStatuses
         c.water = a.water - b.water;
         c.sun = a.sun - b.sun;
         return c;
+    }
+
+    public static bool checkZero(ResourcesStatuses r)
+    {
+        if (r.sun <= 0|| r.water <= 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
 

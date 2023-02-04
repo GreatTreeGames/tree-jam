@@ -7,8 +7,18 @@ public class ActionSender : MonoBehaviour
     public void SendAction(int index)
     {
         InputAction a = possibleActions[index];
-        target.growth+= a.toApply;
-        target.resources -= a.toSpend;
+        ResourcesStatuses testZero = new ResourcesStatuses();
+        testZero = target.resources - a.toSpend;
+        if (!ResourcesStatuses.checkZero(testZero))
+        {
+            target.growth+= a.toApply;
+            target.resources -= a.toSpend;
+        }
+        else
+        {
+            print("not enough sun or water");
+        }
+        
     }
 
     public List<InputAction> possibleActions;

@@ -472,18 +472,6 @@ PrefabInstance:
       propertyPath: inventoryDisplay
       value: 
       objectReference: {fileID: 2050941401}
-    - target: {fileID: 714293117188342824, guid: 3044e0a9a38b1eb41b5da1517f481b98, type: 3}
-      propertyPath: rootGatherMultiplier
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 714293117188342824, guid: 3044e0a9a38b1eb41b5da1517f481b98, type: 3}
-      propertyPath: canopyGatherMultiplier
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 714293117188342824, guid: 3044e0a9a38b1eb41b5da1517f481b98, type: 3}
-      propertyPath: trunkStorageMultiplier
-      value: 1000
-      objectReference: {fileID: 0}
     - target: {fileID: 714293117188342825, guid: 3044e0a9a38b1eb41b5da1517f481b98, type: 3}
       propertyPath: m_Name
       value: TreeObject
@@ -569,6 +557,42 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 2033907057}
+    - target: {fileID: 3716263924692246442, guid: 81410a03665115a4b9655baf106c8e04, type: 3}
+      propertyPath: possibleActions.Array.data[0].toSpend.sun
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3716263924692246442, guid: 81410a03665115a4b9655baf106c8e04, type: 3}
+      propertyPath: possibleActions.Array.data[3].toSpend.sun
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3716263924692246442, guid: 81410a03665115a4b9655baf106c8e04, type: 3}
+      propertyPath: possibleActions.Array.data[4].toSpend.sun
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3716263924692246442, guid: 81410a03665115a4b9655baf106c8e04, type: 3}
+      propertyPath: possibleActions.Array.data[6].toSpend.sun
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3716263924692246442, guid: 81410a03665115a4b9655baf106c8e04, type: 3}
+      propertyPath: possibleActions.Array.data[7].toSpend.sun
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3716263924692246442, guid: 81410a03665115a4b9655baf106c8e04, type: 3}
+      propertyPath: possibleActions.Array.data[2].toSpend.water
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3716263924692246442, guid: 81410a03665115a4b9655baf106c8e04, type: 3}
+      propertyPath: possibleActions.Array.data[4].toSpend.water
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3716263924692246442, guid: 81410a03665115a4b9655baf106c8e04, type: 3}
+      propertyPath: possibleActions.Array.data[5].toSpend.water
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3716263924692246442, guid: 81410a03665115a4b9655baf106c8e04, type: 3}
+      propertyPath: possibleActions.Array.data[7].toSpend.water
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3716263924692246445, guid: 81410a03665115a4b9655baf106c8e04, type: 3}
       propertyPath: m_Name
       value: Controls

@@ -15,7 +15,7 @@ public class TreeInventoryDisplay : MonoBehaviour
     
     public void updateGraphics(ResourcesStatuses currentvalue)
     {
-        sunamount.text = currentvalue.sun.ToString();
-        wateramount.text = currentvalue.water.ToString();
+        sunamount.text = Mathf.FloorToInt(currentvalue.sun).ToString();
+        wateramount.text = Mathf.FloorToInt(currentvalue.water).ToString();
     }
 }

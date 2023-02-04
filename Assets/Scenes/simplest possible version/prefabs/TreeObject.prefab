@@ -276,9 +276,9 @@ MonoBehaviour:
     sun: 1
   visual: {fileID: 714293117182012192}
   inventoryDisplay: {fileID: 0}
-  rootGatherMultiplier: 1
-  canopyGatherMultiplier: 1
-  trunkStorageMultiplier: 100
+  rootGatherMultiplier: 0.01
+  canopyGatherMultiplier: 0.01
+  trunkStorageMultiplier: 10
 --- !u!1 &714293117665725015
 GameObject:
   m_ObjectHideFlags: 0
