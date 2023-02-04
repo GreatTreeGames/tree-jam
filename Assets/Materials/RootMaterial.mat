@@ -100,8 +100,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - P1Weight: 0
-    - P2Weight: 0
+    - P1Weight: 0.1
+    - P2Weight: 0.05
     - P3Weight: 0
     - P4Weight: 0
     - P5Weight: 0
@@ -126,7 +126,7 @@ Material:
     - P3Pos: {r: 0, g: 0, b: 0, a: 0}
     - P4Pos: {r: 0, g: 0, b: 0, a: 0}
     - P5Pos: {r: 0, g: 0, b: 0, a: 0}
-    - TexSize: {r: 0, g: 0, b: 0, a: 0}
+    - TexSize: {r: 1, g: 1, b: 0, a: 0}
     - Vector2_c18484fa6bb347baafb4b7a5db432a7e: {r: 290, g: 222, b: 0, a: 0}
     - Vector2_e8d3109f04d140d6af8dbeb398977068: {r: 2, g: 2, b: 0, a: 0}
     - _BASE_COLOR: {r: 0, g: 0, b: 0, a: 0}

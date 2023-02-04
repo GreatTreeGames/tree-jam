@@ -33,6 +33,9 @@ namespace Scenes.simplest_possible_version.scripts
         private TreeNode[] _children = new TreeNode[MaxChildren];
 
         [field: SerializeField] public float Weight { get; set; }
+        [SerializeField] private bool inputEnabled = false;
+        [SerializeField] private float moveSpeed = 1f;
+        [SerializeField] private TreeNode prefab;
 
         private void Awake()
         {
@@ -85,7 +88,51 @@ namespace Scenes.simplest_possible_version.scripts
 
         private void ProcessInput()
         {
-            // Input.GetKey()
+            if (!inputEnabled) return;
+
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                transform.position += Time.deltaTime * moveSpeed * Vector3.up;
+            }
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                transform.position += Time.deltaTime * moveSpeed * Vector3.down;
+            }
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                transform.position += Time.deltaTime * moveSpeed * Vector3.left;
+            }
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                transform.position += Time.deltaTime * moveSpeed * Vector3.right;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Equals))
+            {
+                SpawnBranch(1f, 45);
+                SpawnBranch(1f, -15);
+            }
+        }
+
+        private void SpawnBranch(float distance, float degreesFromOppositeParent = 0)
+        {
+            int childCount = _children.Count(c => c != null);
+            if (childCount >= MaxChildren) return;
+
+            var newNode = Instantiate(prefab, transform);
+            newNode.Weight = Weight * 0.67f;
+            newNode.inputEnabled = true;
+            inputEnabled = false;
+            if (transform.parent != null)
+            {
+                Vector3 toParent = transform.parent.position - transform.position;
+                var finalDisplacement = distance * (Quaternion.AngleAxis(degreesFromOppositeParent, Vector3.forward) * toParent.normalized);
+                newNode.transform.position = transform.position - finalDisplacement;
+            }
+            else
+            {
+                newNode.transform.position = transform.position + Vector3.up;
+            }
         }
 
         private void AdjustTextureBounds()
@@ -106,18 +153,18 @@ namespace Scenes.simplest_possible_version.scripts
             {
                 if (child == null) continue;
 
-                child.transform.parent = transform;
+                child.transform.SetParent(transform, true);
             }
         }
 
         private Vector2 GetDesiredBounds()
         {
-            float biggestXDist = 0f;
-            float biggestYDist = 0f;
+            float biggestXDist = Weight;
+            float biggestYDist = Weight;
 
             if (_children.All(c => c == null))
             {
-                return new Vector2(Weight, Weight);
+                return new Vector2(biggestXDist, biggestYDist);
             }
 
             foreach (TreeNode child in _children)
