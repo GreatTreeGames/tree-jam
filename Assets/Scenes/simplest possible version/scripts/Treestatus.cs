@@ -38,6 +38,10 @@ public class Treestatus : MonoBehaviour
     public float canopyGatherMultiplier = 1f;
     public float trunkStorageMultiplier = 1f;
 
+    public Treestatus opponent;
+    public float enemytrunkheightstrength = 1;
+    public float enemyoutshadestrength = 1;
+    public float totalenemysabotagestrength = 1;
     void Start()
     {
         growth = startinggrowth;
@@ -50,15 +54,19 @@ public class Treestatus : MonoBehaviour
         //store as much resources as possible in the trunk
 
         {
-            //calculate gather rate and limits
+            //calculate area of all tree elements
             float rootsArea = _growth.roots.width * _growth.roots.height;
             float canopyArea = _growth.canopy.wideness * _growth.canopy.height;
             float trunkArea = _growth.trunk.width * _growth.trunk.height;
 
+            //calculate gather and storage rates from area
             float trunkTotalSunStorage = trunkArea * trunkStorageMultiplier; //replace with a function if the multiplier is ever not constant
             float trunkTotalWaterStorage = trunkTotalSunStorage; //replace with a function if these are ever different
             float rootTotalGatherRate = rootsArea * rootGatherMultiplier;//same
             float canopyTotalGatherRate = canopyArea * canopyGatherMultiplier; //same
+            
+            //cut gather rate by opponent traits if there is a valid opponent
+            cutSunGathering(opponent, canopyTotalGatherRate);
             //gather. clamp by limit
             ResourcesStatuses updatedResources = new ResourcesStatuses();
             updatedResources.sun = Mathf.Clamp(resources.sun + canopyTotalGatherRate, 0, trunkTotalSunStorage);
@@ -67,6 +75,16 @@ public class Treestatus : MonoBehaviour
 
         }
     }
+
+    void cutSunGathering(Treestatus opponent, float canopyrate)
+    {
+        if (opponent != null)
+        {
+            canopyrate = canopyrate/(((opponent.growth.trunk.height*enemytrunkheightstrength) * (opponent.growth.canopy.wideness*enemyoutshadestrength)))*totalenemysabotagestrength;
+        }
+    }
+
+    
 }
 [System.Serializable]
 public struct GrowthStatuses

@@ -11,10 +11,7 @@ public class TreeGraphics : MonoBehaviour
     public float TrunkScaleIncrementMultiplier = 1;
     public float CanopyScaleIncrementMultiplier = 1;
 
-    void Start()
-    {
-        updateGraphics(new GrowthStatuses());
-    }
+    
     public void updateGraphics(GrowthStatuses status)
     {
         {
@@ -23,6 +20,7 @@ public class TreeGraphics : MonoBehaviour
             float rootdepth = 1 + (RootScaleIncrementMultiplier * status.roots.height);
 
             RootsSprite.transform.localScale = new Vector3(rootwideness, rootdepth,0);
+            //print(rootdepth);
         }
         {
             //increment trunk wideness and depth
@@ -58,6 +56,6 @@ public class TreeGraphics : MonoBehaviour
     {
         //align sprite topone to sit on top of other sprite bottomone
         float newY = bottomone.gameObject.transform.position.y + bottomone.bounds.extents.y + topOne.bounds.extents.y;
-        topOne.transform.position = (Vector3.up * newY);
+        topOne.transform.position = new Vector2(topOne.transform.position.x,  newY) ;
     }
 }
