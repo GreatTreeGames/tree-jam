@@ -8,6 +8,7 @@ public class ArrowDialInput : MonoBehaviour
 
     public RectTransform arrow;
     public GameObject selected;
+    public RadialLayout layout;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,13 +33,14 @@ public class ArrowDialInput : MonoBehaviour
                 inputAngledegrees = 360f - Vector3.Angle(Vector3.up, input);
             }
 
-            selected = ReturnNearestRadialItem()
+            selected = ReturnNearestRadialItem(inputAngledegrees,layout );
             arrow.rotation = Quaternion.Euler(0, 0, inputAngledegrees);
         }
     }
 
-    void ReturnNearestRadialItem(float angle, RadialLayout layout)
+    GameObject ReturnNearestRadialItem(float angle, RadialLayout layout)
     {
-        //for an angle 
+        //for an angle
+        return null; 
     }
 }
