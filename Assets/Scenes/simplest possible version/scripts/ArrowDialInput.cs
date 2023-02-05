@@ -9,6 +9,9 @@ public class ArrowDialInput : MonoBehaviour
     public RectTransform arrow;
     public holdangledata selected;
     public List<holdangledata> angledatas;
+    public string horizontalaxisname = "Horizontal";
+    public string verticalaxisname = "Vertical";
+    public string acceptbuttonname;
     
     // Start is called before the first frame update
     void Start()
@@ -19,8 +22,8 @@ public class ArrowDialInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        float h = Input.GetAxis(horizontalaxisname);
+        float v = Input.GetAxis(verticalaxisname);
         Vector3 input = new Vector3 (h,v,0);
         if (input != Vector3.zero)
         {
@@ -33,7 +36,7 @@ public class ArrowDialInput : MonoBehaviour
             {
                 inputAngledegrees = 360f - Vector3.Angle(Vector3.up, input);
             }
-            print (inputAngledegrees);
+            //print (inputAngledegrees);
             holdangledata oldselected = selected;
             selected = ReturnNearestRadialItem(inputAngledegrees);
             
@@ -45,6 +48,12 @@ public class ArrowDialInput : MonoBehaviour
             }
             
             arrow.rotation = Quaternion.Euler(0, 0, inputAngledegrees);
+
+            if (Input.GetButtonDown(acceptbuttonname))
+            {
+                print("sending button event");
+                selected.onSubmit.Invoke();
+            }
         }
     }
 

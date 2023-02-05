@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 public class holdangledata : MonoBehaviour
 {
     public float angle;
     public Image background;
+
+    public UnityEvent onSubmit;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,4 +29,5 @@ public class holdangledata : MonoBehaviour
     {
         background.color = Color.green;
     }
+
 }
