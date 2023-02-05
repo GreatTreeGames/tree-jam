@@ -68,6 +68,10 @@ public class RadialLayout : LayoutGroup {
                 //Force objects to be center aligned, this can be changed however I'd suggest you keep all of the objects with the same anchor points.
                 child.anchorMin = child.anchorMax = child.pivot = new Vector2(0.5f, 0.5f);
                 fAngle += fOffsetAngle;
+                if (child.GetComponent<holdangledata>()!= null)
+                {
+                    child.GetComponent<holdangledata>().angle = fAngle;
+                }
             }
         }
 
