@@ -464,9 +464,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 658715dd38880374a8bef2aab5200134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingRootWeight: 1
+  startingRootWeight: 0.2
   startingTrunkHeight: 1
-  startingCanopyWeight: 1
+  startingCanopyWeight: 0.2
   <RootPrefab>k__BackingField: {fileID: 8378044743472148138, guid: 30e606d9a4e025f4898c8da5cfb4ff28, type: 3}
   <BranchPrefab>k__BackingField: {fileID: 8378044743472148138, guid: 30e606d9a4e025f4898c8da5cfb4ff28, type: 3}
   <LeafPrefab>k__BackingField: {fileID: 0}

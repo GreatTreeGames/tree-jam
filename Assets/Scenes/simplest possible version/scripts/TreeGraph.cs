@@ -96,13 +96,9 @@ namespace Scenes.simplest_possible_version.scripts
             ActOnTree(kek);
         }
 
-        public void VariableSpawnStep(float bias)
+        public void VariableSpawnStep(float widthbias, float heightbias)
         {
-            SpawnNodesOnLeaves(_minDistance,
-                    _maxDistance,
-                    _minDegreesFromParent,
-                    _maxDegreesFromParent,
-                    _parentWeightFactor);
+            SpawnNodesOnLeaves(_minDistance ,_maxDistance,_minDegreesFromParent,_maxDegreesFromParent,_parentWeightFactor);
         }
 
         

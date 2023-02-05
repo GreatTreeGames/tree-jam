@@ -20,13 +20,14 @@ namespace Scenes.simplest_possible_version.scripts
         private void Awake()
         {
             var p1RootRootObj = Instantiate(RootPrefab, PlayerRoots.transform);
-            PlayerRoots.Root = new TreeGraphNode(p1RootRootObj, PlayerRoots.transform.position, default, startingRootWeight, true);
-
-            var p1CanopyRootObj = Instantiate(BranchPrefab, PlayerCanopy.transform);
-            PlayerCanopy.Root = new TreeGraphNode(p1CanopyRootObj,
-                PlayerCanopy.transform.position + new Vector3(0, startingTrunkHeight, 0),
-                default, startingCanopyWeight,
-                true);
+                PlayerRoots.Root = new TreeGraphNode(p1RootRootObj, PlayerRoots.transform.position, Vector3.up, startingRootWeight, true);
+                
+                var p1CanopyRootObj = Instantiate(BranchPrefab, PlayerCanopy.transform);
+                PlayerCanopy.Root = new TreeGraphNode(p1CanopyRootObj,
+                    PlayerCanopy.transform.position + new Vector3(0, startingTrunkHeight, 0),
+                    Vector3.down,
+                    startingCanopyWeight,
+                    true);
 
                 PlayerCanopy.manager = this;
                 PlayerRoots.manager = this;
@@ -50,8 +51,8 @@ namespace Scenes.simplest_possible_version.scripts
             //if there is height difference, grow leaves that bias tall
             //if the ratio seems equal, grow denser
 
-            PlayerRoots.VariableSpawnStep(rootnewGrowthRatio);
-            PlayerCanopy.VariableSpawnStep(canopynewGrowthRatio);
+            PlayerRoots.VariableSpawnStep((float)growthDifference.roots.width, (float)growthDifference.roots.height );
+            PlayerCanopy.VariableSpawnStep((float)growthDifference.canopy.wideness, (float)growthDifference.canopy.height);
 
             //use the ratios of these 2 to bias the growth
 
