@@ -50,9 +50,18 @@ namespace Scenes.simplest_possible_version.scripts
             //if there is a width difference, grow leaves that bias wide
             //if there is height difference, grow leaves that bias tall
             //if the ratio seems equal, grow denser
-
+            if (growthDifference.canopy.height != 0 || growthDifference.canopy.wideness != 0)
+            {
+              PlayerCanopy.VariableSpawnStep((float)growthDifference.canopy.wideness, (float)growthDifference.canopy.height);  
+            }
+            if (growthDifference.roots.height!= 0 || growthDifference.roots.width != 0)
+            {
+                
             PlayerRoots.VariableSpawnStep((float)growthDifference.roots.width, (float)growthDifference.roots.height );
-            PlayerCanopy.VariableSpawnStep((float)growthDifference.canopy.wideness, (float)growthDifference.canopy.height);
+                
+                
+            }
+            
 
             //use the ratios of these 2 to bias the growth
 
