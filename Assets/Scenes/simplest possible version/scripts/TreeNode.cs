@@ -129,8 +129,25 @@ namespace Scenes.simplest_possible_version.scripts
                 SetChildrenArray();
             }
         }
+        
+        public void wideSpawnStep()
+        {
+            //choose a number of branches to spawn on each leaf node
+            var numBranches = Random.Range(1, 4);
+            //perform each branch spawn, getting farther and wider for each new branch spawned
+            for (int i = 0; i <= numBranches; i++)
+            {
+                SpawnBranch(Random.Range(0.2f + (i *0.1f), 2f), Random.Range(-15* (i+1), 15 * (i+1)));
+            }
+            SetChildrenArray();
+        }
 
-        private void SpawnBranch(float distance, float childWeight, float degreesFromOppositeParent = 0)
+        public void volumeSpawnStep()
+        {
+
+        }
+
+        private void SpawnBranch(float distance, float degreesFromOppositeParent = 0)
         {
             int childCount = _children.Count(c => c != null);
             if (childCount >= MaxChildren) return;
@@ -166,12 +183,8 @@ namespace Scenes.simplest_possible_version.scripts
             
             var desiredBounds = GetDesiredBounds();
             Vector2 currentSize = _renderer.bounds.extents;
-            Vector2 goalScaleRatio = desiredBounds / currentSize;
+            Vector2 goalScaleRatio = desiredBounds/currentSize;
             transform.localScale = transform.localScale.Multiply(goalScaleRatio.ToVector3(1));
-            if (leaf != null)
-            {
-                leaf.transform.position = transform.position;
-            }
             
             foreach (var child in _children)
             {
