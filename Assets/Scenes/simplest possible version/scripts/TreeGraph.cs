@@ -13,6 +13,7 @@ namespace Scenes.simplest_possible_version.scripts
         [SerializeField] private float _minDegreesFromParent;
         [SerializeField] private float _maxDegreesFromParent;
         [SerializeField] private float _parentWeightFactor;
+        public TreeGraphicsManager manager;
         
         public TreeGraphNode Root { get; set; }
 
@@ -72,14 +73,38 @@ namespace Scenes.simplest_possible_version.scripts
                 int numBranches = Random.Range(1, TreeGraphNode.MaxChildren - current.NumChildren);
                 for (int i = 0; i < numBranches; i++)
                 {
-                    var newTreeNode = Instantiate(TreeManager.Instance.RootPrefab, transform);
-                    float distance = Random.Range(minDistance, maxDistance);
-                    float degreesFromOppositeParent = Random.Range(minDegreesFromParent, maxDegreesFromParent);
-                    var finalDisplacement = distance * (Quaternion.AngleAxis(degreesFromOppositeParent, Vector3.forward) * current.ToParent.normalized);
-                    current.AddChild(newTreeNode, current.Position - finalDisplacement, current.Weight * parentWeightFactor);
+                    if (manager != null)
+                    {
+                        var newTreeNode = Instantiate(manager.RootPrefab, transform); 
+                        float distance = Random.Range(minDistance, maxDistance);
+                        float degreesFromOppositeParent = Random.Range(minDegreesFromParent, maxDegreesFromParent);
+                        var finalDisplacement = distance * (Quaternion.AngleAxis(degreesFromOppositeParent, Vector3.forward) * current.ToParent.normalized);
+                        current.AddChild(newTreeNode, current.Position - finalDisplacement, current.Weight * parentWeightFactor);
+                    }
+                    else
+                    {
+                        var newTreeNode = Instantiate(TreeManager.Instance.RootPrefab, transform);  
+                        float distance = Random.Range(minDistance, maxDistance);
+                        float degreesFromOppositeParent = Random.Range(minDegreesFromParent, maxDegreesFromParent);
+                        var finalDisplacement = distance * (Quaternion.AngleAxis(degreesFromOppositeParent, Vector3.forward) * current.ToParent.normalized);
+                        current.AddChild(newTreeNode, current.Position - finalDisplacement, current.Weight * parentWeightFactor);
+                    }
+                    
+                    
                 }
             };
             ActOnTree(kek);
         }
+
+        public void VariableSpawnStep(float bias)
+        {
+            SpawnNodesOnLeaves(_minDistance,
+                    _maxDistance,
+                    _minDegreesFromParent,
+                    _maxDegreesFromParent,
+                    _parentWeightFactor);
+        }
+
+        
     }
 }

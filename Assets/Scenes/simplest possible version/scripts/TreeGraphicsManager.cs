@@ -28,6 +28,37 @@ namespace Scenes.simplest_possible_version.scripts
                 default, startingCanopyWeight,
                 true);
 
+                PlayerCanopy.manager = this;
+                PlayerRoots.manager = this;
+
+        }
+
+        public void updateGraphicsStepwise(GrowthStatuses growthDifference)
+        {
+
+            print("update stepwise");
+            //right now the only thing that can change is length and width
+            //so look at the new addition, and for the next step of growth, determine its ratio of length and width
+
+            float rootnewGrowthRatio = (float)growthDifference.roots.height / (float)growthDifference.roots.width;
+
+            float canopynewGrowthRatio = (float)growthDifference.canopy.height / (float)growthDifference.canopy.wideness;
+
+            float trunknewGrowthRatio = (float)growthDifference.trunk.height / (float)growthDifference.trunk.width;
+
+            //if there is a width difference, grow leaves that bias wide
+            //if there is height difference, grow leaves that bias tall
+            //if the ratio seems equal, grow denser
+
+            PlayerRoots.VariableSpawnStep(rootnewGrowthRatio);
+            PlayerCanopy.VariableSpawnStep(canopynewGrowthRatio);
+
+            //use the ratios of these 2 to bias the growth
+
+            //get the ratio of the width and height of new growth
+            //bias straigher branches for height, crookeder branches for width
+            //the ratio being 1 will lead to dense growth
+
         }
     }
 }

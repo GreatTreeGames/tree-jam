@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Scenes.simplest_possible_version.scripts;
 public class Treestatus : MonoBehaviour
 {
     public GrowthStatuses startinggrowth;
@@ -14,9 +14,9 @@ public class Treestatus : MonoBehaviour
         }
         set
         {
-            visual.updateGraphicsStepwise(value - _growth);
+            newvisual.updateGraphicsStepwise(value - _growth);
             _growth = value;
-            
+            visual.updateGraphics(_growth);
         }
     }
     GrowthStatuses _growth;
@@ -34,6 +34,7 @@ public class Treestatus : MonoBehaviour
     }
     ResourcesStatuses _resources;
     public TreeGraphics visual;
+    public TreeGraphicsManager newvisual;
     public TreeInventoryDisplay inventoryDisplay;
     public float rootGatherMultiplier = 1f;
     public float canopyGatherMultiplier = 1f;
