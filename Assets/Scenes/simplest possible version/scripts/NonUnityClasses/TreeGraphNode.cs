@@ -49,18 +49,28 @@ namespace Scenes.simplest_possible_version.scripts
             var newNode = new TreeGraphNode(treeNodeGameObj, position, newToParent, weight);
             _children.Add(newNode);
             CopyChildrenToObj(_children, TreeNodeGameObj.Children);
+            
+            TreeNodeGameObj.AdjustTextureBounds();
+            TreeNodeGameObj.SetMaterialProperties();
+            treeNodeGameObj.AdjustTextureBounds();
+            treeNodeGameObj.SetMaterialProperties();
         }
 
         public void AddLeaves(SpriteRenderer leaves)
+        {
+            ClearLeaves();
+            Leaves = leaves;
+            Leaves.transform.position = Position;
+            float adjustedWeight = Mathf.Sqrt(Weight);
+            Leaves.transform.localScale = Leaves.transform.localScale.Multiply(new Vector3(adjustedWeight, adjustedWeight, 1));
+        }
+
+        public void ClearLeaves()
         {
             if (HasLeaves)
             {
                 Object.Destroy(Leaves);
             }
-            Leaves = leaves;
-            Leaves.transform.position = Position;
-            float adjustedWeight = Mathf.Sqrt(Weight);
-            Leaves.transform.localScale = Leaves.transform.localScale.Multiply(new Vector3(adjustedWeight, adjustedWeight, 1));
         }
 
         private static void CopyChildrenToObj(IReadOnlyList<TreeGraphNode> source, IList<TreeNode> target)

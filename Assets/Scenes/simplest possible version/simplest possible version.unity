@@ -1248,6 +1248,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 549518403783515359, guid: 3044e0a9a38b1eb41b5da1517f481b98, type: 3}
+      propertyPath: <LeafPrefab>k__BackingField
+      value: 
+      objectReference: {fileID: 7513027383652173856, guid: 843f7b56fccbb89469cae8d4095c5262, type: 3}
     - target: {fileID: 714293117188342824, guid: 3044e0a9a38b1eb41b5da1517f481b98, type: 3}
       propertyPath: opponent
       value: 
@@ -1307,6 +1311,14 @@ PrefabInstance:
     - target: {fileID: 1092094680424622271, guid: 3044e0a9a38b1eb41b5da1517f481b98, type: 3}
       propertyPath: enableInput
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3096867122349090896, guid: 3044e0a9a38b1eb41b5da1517f481b98, type: 3}
+      propertyPath: hasLeaves
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3096867122349090896, guid: 3044e0a9a38b1eb41b5da1517f481b98, type: 3}
+      propertyPath: keepLeavesUpdated
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3044e0a9a38b1eb41b5da1517f481b98, type: 3}
@@ -2770,6 +2782,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 549518403783515359, guid: 3044e0a9a38b1eb41b5da1517f481b98, type: 3}
+      propertyPath: <LeafPrefab>k__BackingField
+      value: 
+      objectReference: {fileID: 7513027383652173856, guid: 843f7b56fccbb89469cae8d4095c5262, type: 3}
     - target: {fileID: 714293117188342824, guid: 3044e0a9a38b1eb41b5da1517f481b98, type: 3}
       propertyPath: opponent
       value: 
@@ -2833,6 +2849,14 @@ PrefabInstance:
     - target: {fileID: 1092094680424622271, guid: 3044e0a9a38b1eb41b5da1517f481b98, type: 3}
       propertyPath: enableInput
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3096867122349090896, guid: 3044e0a9a38b1eb41b5da1517f481b98, type: 3}
+      propertyPath: hasLeaves
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3096867122349090896, guid: 3044e0a9a38b1eb41b5da1517f481b98, type: 3}
+      propertyPath: keepLeavesUpdated
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3044e0a9a38b1eb41b5da1517f481b98, type: 3}

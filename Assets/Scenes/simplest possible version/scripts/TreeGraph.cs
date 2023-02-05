@@ -13,6 +13,11 @@ namespace Scenes.simplest_possible_version.scripts
         [SerializeField] private float _minDegreesFromParent;
         [SerializeField] private float _maxDegreesFromParent;
         [SerializeField] private float _parentWeightFactor;
+        [SerializeField] private bool hasLeaves = false;
+        [SerializeField] private bool keepLeavesUpdated = false;
+        [SerializeField] private int leafDepth = 1;
+        [SerializeField] private float leafBrightness = 1;
+        [SerializeField] private float leafScale = 1f;
         public TreeGraphicsManager manager;
         
         public TreeGraphNode Root { get; set; }
@@ -43,6 +48,11 @@ namespace Scenes.simplest_possible_version.scripts
                 SpawnLeafObjectsOnNodes(0);
             }
 
+            if (Input.GetKeyDown(KeyCode.Alpha0))
+            {
+                TrimLeavesFartherThan(1);
+            }
+
             if (Input.GetKeyDown(KeyCode.F1))
             {
                 Action<TreeGraphNode, TreeGraphNode, int> kek = (parent, current, rank) =>
@@ -53,20 +63,38 @@ namespace Scenes.simplest_possible_version.scripts
             }
         }
 
-        private void SpawnLeafObjectsOnNodes(int maxDistanceFromEnds)
+        /// <summary> brightness is from 0 to 1 </summary>
+        public void SpawnLeafObjectsOnNodes(int maxDistanceFromEnds)
         {
+            if (!hasLeaves) return;
+            
             Action<TreeGraphNode, TreeGraphNode, int> kek = (parent, current, rank) =>
             {
                 if (current.DistanceToClosestLeaf > maxDistanceFromEnds) return;
 
                 var leafab = manager?.LeafPrefab ?? TreeManager.Instance.LeafPrefab;
                 var newObj = Instantiate(leafab, transform);
+                // newObj.color = new Color(leafBrightness, leafBrightness, leafBrightness);
+                newObj.transform.localScale *= leafScale;
                 current.AddLeaves(newObj);
             };
             ActOnTree(kek);
         }
 
-        private void SpawnNodesOnLeaves(float minDistance, float maxDistance, float minDegreesFromParent, float maxDegreesFromParent, float parentWeightFactor)
+        public void TrimLeavesFartherThan(int minDistanceFromEnds)
+        {
+            if (!hasLeaves) return;
+            
+            Action<TreeGraphNode, TreeGraphNode, int> kek = (parent, current, rank) =>
+            {
+                if (current.DistanceToClosestLeaf < minDistanceFromEnds) return;
+
+                current.ClearLeaves();
+            };
+            ActOnTree(kek);
+        }
+
+        public void SpawnNodesOnLeaves(float minDistance, float maxDistance, float minDegreesFromParent, float maxDegreesFromParent, float parentWeightFactor)
         {
             Action<TreeGraphNode, TreeGraphNode, int> kek = (parent, current, rank) =>
             {
@@ -84,6 +112,15 @@ namespace Scenes.simplest_possible_version.scripts
                 }
             };
             ActOnTree(kek);
+            UpdateLeavesIfNeeded();
+        }
+
+        private void UpdateLeavesIfNeeded()
+        {
+            if (!keepLeavesUpdated) return;
+            
+            SpawnLeafObjectsOnNodes(leafDepth);
+            TrimLeavesFartherThan(leafDepth + 1);
         }
 
         public void VariableSpawnStep(float widthbias, float heightbias)

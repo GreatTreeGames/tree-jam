@@ -85,8 +85,7 @@ namespace Scenes.simplest_possible_version.scripts
         private void Update()
         {
             ProcessInput();
-            AdjustTextureBounds();
-            SetMaterialProperties();
+            // SetMaterialProperties();
         }
 
         private void ProcessInput()
@@ -162,7 +161,7 @@ namespace Scenes.simplest_possible_version.scripts
             }
         }
 
-        private void AdjustTextureBounds()
+        public void AdjustTextureBounds()
         {
             var desiredBounds = GetDesiredBounds();
             Vector2 currentSize = _renderer.bounds.extents;
@@ -217,7 +216,7 @@ namespace Scenes.simplest_possible_version.scripts
             CopyArrayOrNull(foundChildren.ToArray(), Children);
         }
 
-        private void SetMaterialProperties()
+        public void SetMaterialProperties()
         {
             Vector2 texSize = new Vector2(_renderer.bounds.size.x, _renderer.bounds.size.y);
             _renderer.material.SetVector(TexSize, texSize);
