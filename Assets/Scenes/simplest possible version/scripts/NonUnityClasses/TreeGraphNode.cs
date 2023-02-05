@@ -1,24 +1,31 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Scenes.simplest_possible_version.scripts
 {
     public class TreeGraphNode
     {
+        public const int MaxChildren = 4;
+        
         private List<TreeGraphNode> _children = new List<TreeGraphNode>();
         
         public TreeGraphNode(TreeNode treeNodeGameObj, Vector3 position, Vector3 toParent, float weight, bool isRoot = false)
         {
             TreeNodeGameObj = treeNodeGameObj;
-            Position = position;
+            TreeNodeGameObj.transform.position = position;
             ToParent = toParent;
             Weight = weight;
             IsRoot = isRoot;
         }
 
         public TreeNode TreeNodeGameObj { get; set; }
-        public Vector3 Position { get => TreeNodeGameObj.transform.position; set => TreeNodeGameObj.transform.position = value; }
+        public int NumChildren => _children.Count;
+        public bool HasChildren => _children.Count > 0;
+        public int DepthFromDeepestChild => GetDeepestChild(0);
+        /// <summary> World position of this node's game object </summary>
+        public Vector3 Position { get => TreeNodeGameObj.transform.position; }
         public Vector3 ToParent { get; set; }
         public float Weight { get => TreeNodeGameObj.Weight; set => TreeNodeGameObj.Weight = value; }
         public bool IsRoot { get; }
@@ -54,6 +61,13 @@ namespace Scenes.simplest_possible_version.scripts
                     target[i] = null;
                 }
             }
+        }
+        
+        private int GetDeepestChild(int currentDepth)
+        {
+            if (NumChildren == 0) return currentDepth;
+            
+            return _children.Select(c => c.GetDeepestChild(currentDepth + 1)).Min();
         }
     }
 }
