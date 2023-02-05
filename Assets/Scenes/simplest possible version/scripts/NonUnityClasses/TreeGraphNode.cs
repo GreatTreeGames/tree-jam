@@ -59,7 +59,8 @@ namespace Scenes.simplest_possible_version.scripts
             }
             Leaves = leaves;
             Leaves.transform.position = Position;
-            // Leaves.transform.localScale = Leaves.transform.localScale.Multiply(new Vector3(Weight, Weight, 1));
+            float adjustedWeight = Mathf.Sqrt(Weight);
+            Leaves.transform.localScale = Leaves.transform.localScale.Multiply(new Vector3(adjustedWeight, adjustedWeight, 1));
         }
 
         private static void CopyChildrenToObj(IReadOnlyList<TreeGraphNode> source, IList<TreeNode> target)
