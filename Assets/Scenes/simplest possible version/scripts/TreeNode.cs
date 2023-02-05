@@ -147,7 +147,7 @@ namespace Scenes.simplest_possible_version.scripts
 
         }
 
-        private void SpawnBranch(float distance, float degreesFromOppositeParent = 0)
+        private void SpawnBranch(float distance, float childWeight, float degreesFromOppositeParent = 0)
         {
             int childCount = _children.Count(c => c != null);
             if (childCount >= MaxChildren) return;
