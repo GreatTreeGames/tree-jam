@@ -412,10 +412,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableInput: 0
-  _minDistance: 0.12
-  _maxDistance: 1.09
-  _minDegreesFromParent: -23.1
-  _maxDegreesFromParent: 13.25
+  _minDistance: 0.1
+  _maxDistance: 1
+  _minDegreesFromParent: -25
+  _maxDegreesFromParent: 25
   _parentWeightFactor: 0.8
   manager: {fileID: 0}
 --- !u!1 &6352669103322327720
@@ -516,10 +516,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableInput: 0
-  _minDistance: 0.12
-  _maxDistance: 1.09
-  _minDegreesFromParent: -23.1
-  _maxDegreesFromParent: 13.25
+  _minDistance: 0.1
+  _maxDistance: 1
+  _minDegreesFromParent: -25
+  _maxDegreesFromParent: 25
   _parentWeightFactor: 0.8
   manager: {fileID: 0}
 --- !u!1 &9204753631185159011
@@ -566,10 +566,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableInput: 0
-  _minDistance: 0.12
-  _maxDistance: 1.09
-  _minDegreesFromParent: -23.1
-  _maxDegreesFromParent: 13.25
+  _minDistance: 0.1
+  _maxDistance: 1
+  _minDegreesFromParent: -25
+  _maxDegreesFromParent: 25
   _parentWeightFactor: 0.8
   manager: {fileID: 0}
 --- !u!1001 &704777902617437088
