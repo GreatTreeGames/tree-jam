@@ -417,6 +417,11 @@ MonoBehaviour:
   _minDegreesFromParent: -25
   _maxDegreesFromParent: 25
   _parentWeightFactor: 0.8
+  hasLeaves: 0
+  keepLeavesUpdated: 0
+  leafDepth: 1
+  leafBrightness: 1
+  leafScale: 1
   manager: {fileID: 0}
 --- !u!1 &6352669103322327720
 GameObject:
@@ -465,7 +470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingRootWeight: 0.2
-  startingTrunkHeight: 1
+  startingTrunkHeight: 0.5
   startingCanopyWeight: 0.2
   <RootPrefab>k__BackingField: {fileID: 8378044743472148138, guid: 30e606d9a4e025f4898c8da5cfb4ff28, type: 3}
   <BranchPrefab>k__BackingField: {fileID: 8378044743472148138, guid: 30e606d9a4e025f4898c8da5cfb4ff28, type: 3}
@@ -521,6 +526,11 @@ MonoBehaviour:
   _minDegreesFromParent: -25
   _maxDegreesFromParent: 25
   _parentWeightFactor: 0.8
+  hasLeaves: 1
+  keepLeavesUpdated: 1
+  leafDepth: 1
+  leafBrightness: 1
+  leafScale: 1
   manager: {fileID: 0}
 --- !u!1 &9204753631185159011
 GameObject:
@@ -571,6 +581,11 @@ MonoBehaviour:
   _minDegreesFromParent: -25
   _maxDegreesFromParent: 25
   _parentWeightFactor: 0.8
+  hasLeaves: 0
+  keepLeavesUpdated: 0
+  leafDepth: 1
+  leafBrightness: 1
+  leafScale: 1
   manager: {fileID: 0}
 --- !u!1001 &704777902617437088
 PrefabInstance:
