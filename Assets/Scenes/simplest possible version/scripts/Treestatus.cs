@@ -14,8 +14,9 @@ public class Treestatus : MonoBehaviour
         }
         set
         {
+            visual.updateGraphicsStepwise(value - _growth);
             _growth = value;
-            visual.updateGraphics(_growth);
+            
         }
     }
     GrowthStatuses _growth;

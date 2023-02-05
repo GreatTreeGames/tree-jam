@@ -12,7 +12,9 @@ public class TreeGraphics : MonoBehaviour
     public float TrunkScaleIncrementMultiplier = 1;
     public float CanopyScaleIncrementMultiplier = 1;
 
-    public TreeNode CanopyTreeNode;
+    public TreeNode CanopyTreeBaseNode;
+
+    public TreeNode RootTreeBaseNode;
     
     public void updateGraphics(GrowthStatuses status)
     {
@@ -54,18 +56,25 @@ public class TreeGraphics : MonoBehaviour
 
     }
 
-    public void updateGraphicsNodeBased(GrowthStatuses existingGrowth, GrowthStatuses newCombinedGrowth)
+    public void updateGraphicsStepwise(GrowthStatuses growthDifference)
     {
-        //subtract the existing from new combined to get the difference
-        GrowthStatuses growthdifference = newCombinedGrowth - existingGrowth;
-        //based on the properties of the new growth, bias the next step
+        
 
-        //if there is no difference between the growths of the old and new canopy, do nothing
+        //right now the only thing that can change is length and width
+        //so look at the new addition, and for the next step of growth, determine its ratio of length and width
+
+        float rootnewGrowthRatio = (float)growthDifference.roots.height / (float)growthDifference.roots.width;
+
+        float canopynewGrowthRatio = (float)growthDifference.canopy.height / (float)growthDifference.canopy.wideness;
+
+        float trunknewGrowthRatio = (float)growthDifference.trunk.height / (float)growthDifference.trunk.width;
         
         //if there is a width difference, grow leaves that bias wide
         //if there is height difference, grow leaves that bias tall
         //if the ratio seems equal, grow denser
 
+        RootTreeBaseNode.VariableSpawnStep(rootnewGrowthRatio);
+        CanopyTreeBaseNode.VariableSpawnStep(canopynewGrowthRatio);
         
         //use the ratios of these 2 to bias the growth
 

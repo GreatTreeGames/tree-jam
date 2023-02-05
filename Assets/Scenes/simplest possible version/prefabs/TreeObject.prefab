@@ -217,6 +217,7 @@ MonoBehaviour:
   RootScaleIncrementMultiplier: 1
   TrunkScaleIncrementMultiplier: 1
   CanopyScaleIncrementMultiplier: 1
+  CanopyTreeNode: {fileID: 0}
 --- !u!1 &714293117188342825
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,12 +379,20 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8378044743472148132, guid: 30e606d9a4e025f4898c8da5cfb4ff28, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8378044743472148132, guid: 30e606d9a4e025f4898c8da5cfb4ff28, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8378044743472148132, guid: 30e606d9a4e025f4898c8da5cfb4ff28, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.2135
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8378044743472148132, guid: 30e606d9a4e025f4898c8da5cfb4ff28, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.2582
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8378044743472148132, guid: 30e606d9a4e025f4898c8da5cfb4ff28, type: 3}
       propertyPath: m_LocalPosition.z
@@ -420,6 +429,10 @@ PrefabInstance:
     - target: {fileID: 8378044743472148137, guid: 30e606d9a4e025f4898c8da5cfb4ff28, type: 3}
       propertyPath: m_Name
       value: RootRoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 8378044743472148137, guid: 30e606d9a4e025f4898c8da5cfb4ff28, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30e606d9a4e025f4898c8da5cfb4ff28, type: 3}
