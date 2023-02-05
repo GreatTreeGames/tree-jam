@@ -36,7 +36,7 @@ namespace Scenes.simplest_possible_version.scripts
         public void updateGraphicsStepwise(GrowthStatuses growthDifference)
         {
 
-
+            print("update stepwise");
             //right now the only thing that can change is length and width
             //so look at the new addition, and for the next step of growth, determine its ratio of length and width
 

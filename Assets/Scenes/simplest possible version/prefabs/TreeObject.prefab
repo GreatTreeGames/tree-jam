@@ -180,7 +180,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &714293117182012195
 Transform:
   m_ObjectHideFlags: 0
@@ -412,6 +412,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableInput: 0
+  _minDistance: 0.12
+  _maxDistance: 1.09
+  _minDegreesFromParent: -23.1
+  _maxDegreesFromParent: 13.25
+  _parentWeightFactor: 0.8
   manager: {fileID: 0}
 --- !u!1 &6352669103322327720
 GameObject:
@@ -429,7 +434,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &172961700823540626
 Transform:
   m_ObjectHideFlags: 0
@@ -511,6 +516,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableInput: 0
+  _minDistance: 0.12
+  _maxDistance: 1.09
+  _minDegreesFromParent: -23.1
+  _maxDegreesFromParent: 13.25
+  _parentWeightFactor: 0.8
   manager: {fileID: 0}
 --- !u!1 &9204753631185159011
 GameObject:
@@ -556,6 +566,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableInput: 0
+  _minDistance: 0.12
+  _maxDistance: 1.09
+  _minDegreesFromParent: -23.1
+  _maxDegreesFromParent: 13.25
+  _parentWeightFactor: 0.8
   manager: {fileID: 0}
 --- !u!1001 &704777902617437088
 PrefabInstance:
