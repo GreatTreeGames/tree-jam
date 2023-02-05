@@ -31,7 +31,7 @@ namespace Scenes.simplest_possible_version.scripts
         private const int MaxChildren = 4;
         
         private SpriteRenderer _renderer;
-        private TreeNode[] _children = new TreeNode[MaxChildren];
+        public TreeNode[] Children = new TreeNode[MaxChildren];
 
         [field: SerializeField] public float Weight { get; set; }
         [SerializeField] private bool inputEnabled = false;
@@ -47,22 +47,22 @@ namespace Scenes.simplest_possible_version.scripts
 
         private void Start()
         {
-            SetChildrenArray();
+            // SetChildrenArray();
         }
 
         private void CopyChildren(IReadOnlyList<TreeNode> newChildren)
         {
             // ignore first child because it's itself
-            for (int i = 0; i < _children.Length; i++)
+            for (int i = 0; i < Children.Length; i++)
             {
                 int adjustedChildIndex = i + 1;
                 if (adjustedChildIndex < newChildren.Count)
                 {
-                    _children[i] = newChildren[adjustedChildIndex];
+                    Children[i] = newChildren[adjustedChildIndex];
                 }
                 else
                 {
-                    _children[i] = null;
+                    Children[i] = null;
                 }
             }
         }
@@ -126,7 +126,7 @@ namespace Scenes.simplest_possible_version.scripts
                 {
                     SpawnBranch(Random.Range(0.5f, 2f), Random.Range(-90, 90));
                 }
-                SetChildrenArray();
+                // SetChildrenArray();
             }
         }
         
@@ -139,7 +139,7 @@ namespace Scenes.simplest_possible_version.scripts
             {
                 SpawnBranch(Random.Range(0.2f + (i *0.1f), 2f), Random.Range(-15* (i+1), 15 * (i+1)));
             }
-            SetChildrenArray();
+            // SetChildrenArray();
         }
 
         public void volumeSpawnStep()
@@ -149,7 +149,7 @@ namespace Scenes.simplest_possible_version.scripts
 
         private void SpawnBranch(float distance, float childWeight, float degreesFromOppositeParent = 0)
         {
-            int childCount = _children.Count(c => c != null);
+            int childCount = Children.Count(c => c != null);
             if (childCount >= MaxChildren) return;
 
             var newNode = Instantiate(prefab, transform);
@@ -174,24 +174,10 @@ namespace Scenes.simplest_possible_version.scripts
 
         private void AdjustTextureBounds()
         {
-            foreach (var child in _children)
-            {
-                if (child == null) continue;
-                
-                child.transform.parent = null;
-            }
-            
             var desiredBounds = GetDesiredBounds();
             Vector2 currentSize = _renderer.bounds.extents;
             Vector2 goalScaleRatio = desiredBounds/currentSize;
             transform.localScale = transform.localScale.Multiply(goalScaleRatio.ToVector3(1));
-            
-            foreach (var child in _children)
-            {
-                if (child == null) continue;
-
-                child.transform.SetParent(transform, true);
-            }
         }
 
         private Vector2 GetDesiredBounds()
@@ -199,12 +185,12 @@ namespace Scenes.simplest_possible_version.scripts
             float biggestXDist = Weight;
             float biggestYDist = Weight;
 
-            if (_children.All(c => c == null))
+            if (Children.All(c => c == null))
             {
                 return new Vector2(biggestXDist, biggestYDist);
             }
 
-            foreach (TreeNode child in _children)
+            foreach (TreeNode child in Children)
             {
                 if (child == null) continue;
                 
@@ -238,7 +224,7 @@ namespace Scenes.simplest_possible_version.scripts
                     foundChildren.Add(component);
                 }
             }
-            CopyArrayOrNull(foundChildren.ToArray(), _children);
+            CopyArrayOrNull(foundChildren.ToArray(), Children);
         }
 
         private void SetMaterialProperties()
@@ -247,10 +233,10 @@ namespace Scenes.simplest_possible_version.scripts
             _renderer.material.SetVector(TexSize, texSize);
             _renderer.material.SetFloat(P1Weight, Weight);
 
-            for (var index = 0; index < _children.Length; index++)
+            for (var index = 0; index < Children.Length; index++)
             {
-                Vector2 relativePosition = _children[index]?.transform.position - transform.position ?? Vector2.zero;
-                float weight = _children[index]?.Weight ?? 0f;
+                Vector2 relativePosition = Children[index]?.transform.position - transform.position ?? Vector2.zero;
+                float weight = Children[index]?.Weight ?? 0f;
                 _renderer.material.SetVector(ChildPos[index], relativePosition);
                 _renderer.material.SetFloat(ChildWeight[index], weight);
             }
