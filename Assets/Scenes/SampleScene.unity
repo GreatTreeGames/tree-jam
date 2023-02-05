@@ -157,6 +157,8 @@ MonoBehaviour:
   inputEnabled: 0
   moveSpeed: 1
   prefab: {fileID: 8378044743472148138, guid: 30e606d9a4e025f4898c8da5cfb4ff28, type: 3}
+  leafab: {fileID: 4546634641673415636, guid: 19a8918ec6fd12947b96878a26c4fc99, type: 3}
+  leaf: {fileID: 0}
 --- !u!212 &582149063
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -271,6 +273,8 @@ MonoBehaviour:
   inputEnabled: 1
   moveSpeed: 1
   prefab: {fileID: 8378044743472148138, guid: 30e606d9a4e025f4898c8da5cfb4ff28, type: 3}
+  leafab: {fileID: 4546634641673415636, guid: 19a8918ec6fd12947b96878a26c4fc99, type: 3}
+  leaf: {fileID: 0}
 --- !u!212 &1810659422
 SpriteRenderer:
   m_ObjectHideFlags: 0

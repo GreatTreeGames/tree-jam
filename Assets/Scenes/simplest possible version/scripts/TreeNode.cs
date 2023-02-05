@@ -37,6 +37,8 @@ namespace Scenes.simplest_possible_version.scripts
         [SerializeField] private bool inputEnabled = false;
         [SerializeField] private float moveSpeed = 1f;
         [SerializeField] private TreeNode prefab;
+        [SerializeField] private Leaf leafab;
+        [SerializeField] private Leaf leaf;
 
         private void Awake()
         {
@@ -128,14 +130,17 @@ namespace Scenes.simplest_possible_version.scripts
             }
         }
 
-        private void SpawnBranch(float distance, float degreesFromOppositeParent = 0)
+        private void SpawnBranch(float distance, float childWeight, float degreesFromOppositeParent = 0)
         {
             int childCount = _children.Count(c => c != null);
             if (childCount >= MaxChildren) return;
 
             var newNode = Instantiate(prefab, transform);
+            var newLeaf = Instantiate(leafab);
             newNode.prefab = prefab;
-            newNode.Weight = Weight * 0.67f;
+            newNode.leafab = leafab;
+            newNode.leaf = newLeaf;
+            newNode.Weight = Weight * childWeight;
             newNode.inputEnabled = true;
             inputEnabled = false;
             if (transform.parent != null)
@@ -161,8 +166,12 @@ namespace Scenes.simplest_possible_version.scripts
             
             var desiredBounds = GetDesiredBounds();
             Vector2 currentSize = _renderer.bounds.extents;
-            Vector2 goalScaleRatio = desiredBounds/currentSize;
+            Vector2 goalScaleRatio = desiredBounds / currentSize;
             transform.localScale = transform.localScale.Multiply(goalScaleRatio.ToVector3(1));
+            if (leaf != null)
+            {
+                leaf.transform.position = transform.position;
+            }
             
             foreach (var child in _children)
             {
