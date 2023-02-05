@@ -128,6 +128,23 @@ namespace Scenes.simplest_possible_version.scripts
             }
         }
 
+        public void wideSpawnStep()
+        {
+            //choose a number of branches to spawn on each leaf node
+            var numBranches = Random.Range(1, 4);
+            //perform each branch spawn, getting farther and wider for each new branch spawned
+            for (int i = 0; i <= numBranches; i++)
+            {
+                SpawnBranch(Random.Range(0.2f + (i *0.1f), 2f), Random.Range(-15* (i+1), 15 * (i+1)));
+            }
+            SetChildrenArray();
+        }
+
+        public void volumeSpawnStep()
+        {
+
+        }
+
         private void SpawnBranch(float distance, float degreesFromOppositeParent = 0)
         {
             int childCount = _children.Count(c => c != null);
