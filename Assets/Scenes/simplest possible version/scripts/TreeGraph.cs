@@ -1,11 +1,18 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Scenes.simplest_possible_version.scripts
 {
     public class TreeGraph : MonoBehaviour
     {
         [SerializeField] private bool enableInput = false;
+
+        [SerializeField] private float _minDistance;
+        [SerializeField] private float _maxDistance;
+        [SerializeField] private float _minDegreesFromParent;
+        [SerializeField] private float _maxDegreesFromParent;
+        [SerializeField] private float _parentWeightFactor;
         
         public TreeGraphNode Root { get; set; }
 
@@ -23,9 +30,39 @@ namespace Scenes.simplest_possible_version.scripts
 
             if (Input.GetKeyDown(KeyCode.Equals))
             {
-                var newTreeNode = Instantiate(TreeManager.Instance.RootPrefab, transform);
-                Root.AddChild(newTreeNode, Vector3.up, 1);
+                SpawnNodesOnLeaves(_minDistance,
+                    _maxDistance,
+                    _minDegreesFromParent,
+                    _maxDegreesFromParent,
+                    _parentWeightFactor);
             }
+
+            if (Input.GetKeyDown(KeyCode.F1))
+            {
+                Action<TreeGraphNode, TreeGraphNode, int> kek = (parent, current, rank) =>
+                {
+                    current.Weight += Mathf.Pow(0.5f, rank + 1);
+                };
+                ActOnTree(kek);
+            }
+        }
+
+        private void SpawnNodesOnLeaves(float minDistance, float maxDistance, float minDegreesFromParent, float maxDegreesFromParent, float parentWeightFactor)
+        {
+            Action<TreeGraphNode, TreeGraphNode, int> kek = (parent, current, rank) =>
+            {
+                if (current.HasChildren) return;
+                int numBranches = Random.Range(1, TreeGraphNode.MaxChildren - current.NumChildren);
+                for (int i = 0; i < numBranches; i++)
+                {
+                    var newTreeNode = Instantiate(TreeManager.Instance.RootPrefab, transform);
+                    float distance = Random.Range(minDistance, maxDistance);
+                    float degreesFromOppositeParent = Random.Range(minDegreesFromParent, maxDegreesFromParent);
+                    var finalDisplacement = distance * (Quaternion.AngleAxis(degreesFromOppositeParent, Vector3.forward) * current.ToParent.normalized);
+                    current.AddChild(newTreeNode, current.Position - finalDisplacement, current.Weight * parentWeightFactor);
+                }
+            };
+            ActOnTree(kek);
         }
     }
 }

@@ -167,6 +167,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableInput: 0
+  _minDistance: 0
+  _maxDistance: 0
+  _minDegreesFromParent: 0
+  _maxDegreesFromParent: 0
+  _parentWeightFactor: 0
 --- !u!1 &582149061
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,6 +202,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dbd44452e864bfc88cf760d3be0e48e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Children:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   <Weight>k__BackingField: 0.5
   inputEnabled: 0
   moveSpeed: 1
@@ -313,6 +323,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableInput: 0
+  _minDistance: 0
+  _maxDistance: 0
+  _minDegreesFromParent: 0
+  _maxDegreesFromParent: 0
+  _parentWeightFactor: 0
 --- !u!1 &1810659419
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,6 +372,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dbd44452e864bfc88cf760d3be0e48e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Children:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   <Weight>k__BackingField: 0.3
   inputEnabled: 0
   moveSpeed: 1
@@ -458,6 +478,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableInput: 0
+  _minDistance: 0.12
+  _maxDistance: 1.09
+  _minDegreesFromParent: -23.1
+  _maxDegreesFromParent: 13.25
+  _parentWeightFactor: 0.8
 --- !u!1 &2044026512
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,6 +527,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableInput: 0
+  _minDistance: 0
+  _maxDistance: 0
+  _minDegreesFromParent: 0
+  _maxDegreesFromParent: 0
+  _parentWeightFactor: 0
 --- !u!1 &2067874807
 GameObject:
   m_ObjectHideFlags: 0
