@@ -38,6 +38,11 @@ namespace Scenes.simplest_possible_version.scripts
                     _parentWeightFactor);
             }
 
+            if (Input.GetKeyDown(KeyCode.Minus))
+            {
+                SpawnLeafObjectsOnNodes(0);
+            }
+
             if (Input.GetKeyDown(KeyCode.F1))
             {
                 Action<TreeGraphNode, TreeGraphNode, int> kek = (parent, current, rank) =>
@@ -46,6 +51,18 @@ namespace Scenes.simplest_possible_version.scripts
                 };
                 ActOnTree(kek);
             }
+        }
+
+        private void SpawnLeafObjectsOnNodes(int maxDistanceFromEnds)
+        {
+            Action<TreeGraphNode, TreeGraphNode, int> kek = (parent, current, rank) =>
+            {
+                if (current.DistanceToClosestLeaf > maxDistanceFromEnds) return;
+
+                var leafab = Instantiate(TreeManager.Instance.LeafPrefab);
+                current.AddLeaves(leafab);
+            };
+            ActOnTree(kek);
         }
 
         private void SpawnNodesOnLeaves(float minDistance, float maxDistance, float minDegreesFromParent, float maxDegreesFromParent, float parentWeightFactor)

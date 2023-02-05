@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Scenes.simplest_possible_version.scripts
 {
@@ -21,9 +22,11 @@ namespace Scenes.simplest_possible_version.scripts
         }
 
         public TreeNode TreeNodeGameObj { get; set; }
+        public SpriteRenderer Leaves { get; set; }
         public int NumChildren => _children.Count;
         public bool HasChildren => _children.Count > 0;
-        public int DepthFromDeepestChild => GetDeepestChild(0);
+        public bool HasLeaves => Leaves != null;
+        public int DistanceToClosestLeaf => GetDistanceToClosestLeaf(0);
         /// <summary> World position of this node's game object </summary>
         public Vector3 Position { get => TreeNodeGameObj.transform.position; }
         public Vector3 ToParent { get; set; }
@@ -48,6 +51,17 @@ namespace Scenes.simplest_possible_version.scripts
             CopyChildrenToObj(_children, TreeNodeGameObj.Children);
         }
 
+        public void AddLeaves(SpriteRenderer leaves)
+        {
+            if (HasLeaves)
+            {
+                Object.Destroy(Leaves);
+            }
+            Leaves = leaves;
+            Leaves.transform.position = Position;
+            // Leaves.transform.localScale = Leaves.transform.localScale.Multiply(new Vector3(Weight, Weight, 1));
+        }
+
         private static void CopyChildrenToObj(IReadOnlyList<TreeGraphNode> source, IList<TreeNode> target)
         {
             for (int i = 0; i < target.Count; i++)
@@ -63,11 +77,11 @@ namespace Scenes.simplest_possible_version.scripts
             }
         }
         
-        private int GetDeepestChild(int currentDepth)
+        private int GetDistanceToClosestLeaf(int currentDepth)
         {
             if (NumChildren == 0) return currentDepth;
             
-            return _children.Select(c => c.GetDeepestChild(currentDepth + 1)).Min();
+            return _children.Select(c => c.GetDistanceToClosestLeaf(currentDepth + 1)).Min();
         }
     }
 }

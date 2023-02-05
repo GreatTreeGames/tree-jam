@@ -12,7 +12,7 @@ namespace Scenes.simplest_possible_version.scripts
         
         [field: SerializeField] public TreeNode RootPrefab { get; private set; }
         [field: SerializeField] public TreeNode BranchPrefab { get; private set; }
-        [field: SerializeField] public Leaf LeafPrefab { get; private set; }
+        [field: SerializeField] public SpriteRenderer LeafPrefab { get; private set; }
         
         [field: SerializeField] public TreeGraph Player1Roots { get; private set; }
         [field: SerializeField] public TreeGraph Player1Canopy { get; private set; }
