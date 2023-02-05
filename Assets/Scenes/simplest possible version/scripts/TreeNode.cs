@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 namespace Scenes.simplest_possible_version.scripts
 {
@@ -44,6 +45,7 @@ namespace Scenes.simplest_possible_version.scripts
 
         private void Start()
         {
+            SetChildrenArray();
         }
 
         private void CopyChildren(IReadOnlyList<TreeNode> newChildren)
@@ -81,7 +83,6 @@ namespace Scenes.simplest_possible_version.scripts
         private void Update()
         {
             ProcessInput();
-            SetChildrenArray();
             AdjustTextureBounds();
             SetMaterialProperties();
         }
@@ -109,8 +110,21 @@ namespace Scenes.simplest_possible_version.scripts
 
             if (Input.GetKeyDown(KeyCode.Equals))
             {
-                SpawnBranch(1f, 45);
-                SpawnBranch(1f, -15);
+                var numBranches = Random.Range(1, 4);
+                SpawnBranch(Random.Range(0.2f, 2f), Random.Range(-15, 15));
+                if (numBranches > 1)
+                {
+                    SpawnBranch(Random.Range(0.3f, 2f), Random.Range(-30, 30));
+                }
+                if (numBranches > 2)
+                {
+                    SpawnBranch(Random.Range(0.4f, 2f), Random.Range(-60, 60));
+                }
+                if (numBranches > 3)
+                {
+                    SpawnBranch(Random.Range(0.5f, 2f), Random.Range(-90, 90));
+                }
+                SetChildrenArray();
             }
         }
 
@@ -120,6 +134,7 @@ namespace Scenes.simplest_possible_version.scripts
             if (childCount >= MaxChildren) return;
 
             var newNode = Instantiate(prefab, transform);
+            newNode.prefab = prefab;
             newNode.Weight = Weight * 0.67f;
             newNode.inputEnabled = true;
             inputEnabled = false;
