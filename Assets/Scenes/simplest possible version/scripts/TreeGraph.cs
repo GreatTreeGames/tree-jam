@@ -59,8 +59,9 @@ namespace Scenes.simplest_possible_version.scripts
             {
                 if (current.DistanceToClosestLeaf > maxDistanceFromEnds) return;
 
-                var leafab = Instantiate(TreeManager.Instance.LeafPrefab);
-                current.AddLeaves(leafab);
+                var leafab = manager?.LeafPrefab ?? TreeManager.Instance.LeafPrefab;
+                var newObj = Instantiate(leafab, transform);
+                current.AddLeaves(newObj);
             };
             ActOnTree(kek);
         }
@@ -73,24 +74,13 @@ namespace Scenes.simplest_possible_version.scripts
                 int numBranches = Random.Range(1, TreeGraphNode.MaxChildren - current.NumChildren);
                 for (int i = 0; i < numBranches; i++)
                 {
-                    if (manager != null)
-                    {
-                        var newTreeNode = Instantiate(manager.RootPrefab, transform); 
-                        float distance = Random.Range(minDistance, maxDistance);
-                        float degreesFromOppositeParent = Random.Range(minDegreesFromParent, maxDegreesFromParent);
-                        var finalDisplacement = distance * (Quaternion.AngleAxis(degreesFromOppositeParent, Vector3.forward) * current.ToParent.normalized);
-                        current.AddChild(newTreeNode, current.Position - finalDisplacement, current.Weight * parentWeightFactor);
-                    }
-                    else
-                    {
-                        var newTreeNode = Instantiate(TreeManager.Instance.RootPrefab, transform);  
-                        float distance = Random.Range(minDistance, maxDistance);
-                        float degreesFromOppositeParent = Random.Range(minDegreesFromParent, maxDegreesFromParent);
-                        var finalDisplacement = distance * (Quaternion.AngleAxis(degreesFromOppositeParent, Vector3.forward) * current.ToParent.normalized);
-                        current.AddChild(newTreeNode, current.Position - finalDisplacement, current.Weight * parentWeightFactor);
-                    }
+                    var treefab = manager?.RootPrefab ?? TreeManager.Instance.RootPrefab;
                     
-                    
+                    var newTreeNode = Instantiate(treefab, transform); 
+                    float distance = Random.Range(minDistance, maxDistance);
+                    float degreesFromOppositeParent = Random.Range(minDegreesFromParent, maxDegreesFromParent);
+                    var finalDisplacement = distance * (Quaternion.AngleAxis(degreesFromOppositeParent, Vector3.forward) * current.ToParent.normalized);
+                    current.AddChild(newTreeNode, current.Position - finalDisplacement, current.Weight * parentWeightFactor);
                 }
             };
             ActOnTree(kek);

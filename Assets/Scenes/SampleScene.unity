@@ -172,6 +172,7 @@ MonoBehaviour:
   _minDegreesFromParent: 0
   _maxDegreesFromParent: 0
   _parentWeightFactor: 0
+  manager: {fileID: 0}
 --- !u!1 &582149061
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,11 +324,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableInput: 0
-  _minDistance: 0
-  _maxDistance: 0
-  _minDegreesFromParent: 0
-  _maxDegreesFromParent: 0
-  _parentWeightFactor: 0
+  _minDistance: 0.58
+  _maxDistance: 0.94
+  _minDegreesFromParent: -28.58
+  _maxDegreesFromParent: 29.85
+  _parentWeightFactor: 0.7
+  manager: {fileID: 0}
 --- !u!1 &1810659419
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,7 +461,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1812803864}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4, y: 0, z: 0}
+  m_LocalPosition: {x: -4, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2067874809}
@@ -478,11 +480,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableInput: 0
-  _minDistance: 0.12
+  _minDistance: 0.54
   _maxDistance: 1.09
   _minDegreesFromParent: -23.1
   _maxDegreesFromParent: 13.25
   _parentWeightFactor: 0.8
+  manager: {fileID: 0}
 --- !u!1 &2044026512
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,7 +511,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044026512}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 0, z: 0}
+  m_LocalPosition: {x: 4, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2067874809}
@@ -532,6 +535,7 @@ MonoBehaviour:
   _minDegreesFromParent: 0
   _maxDegreesFromParent: 0
   _parentWeightFactor: 0
+  manager: {fileID: 0}
 --- !u!1 &2067874807
 GameObject:
   m_ObjectHideFlags: 0
